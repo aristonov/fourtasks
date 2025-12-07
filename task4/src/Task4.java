@@ -18,7 +18,7 @@ public class Task4 {
                 list.add(scan.nextInt());
             }
         } catch (Exception e) {
-            System.out.println("Ошибка чтения файла!");
+            System.out.println("Ошибка чтения");
             return;
         }
 
