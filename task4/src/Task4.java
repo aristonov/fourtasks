@@ -4,16 +4,13 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Arrays;
 
-public class Main {
+public class Task4 {
     public static void main(String[] args) {
-        // проверяем указан ли файл
-        if (args.length == 0) {
-            System.out.println("Файл не найден");
-            return;
-        }
+        Scanner console = new Scanner(System.in);
 
-        // получаем имя файла и проверяем его
-        String filename = args[0];
+        // Указываем путь к файлу
+        System.out.print("Введите путь к файлу ");
+        String filename = console.nextLine();
         List<Integer> list = new ArrayList<>();
 
         try (Scanner scan = new Scanner(new File(filename))) {
