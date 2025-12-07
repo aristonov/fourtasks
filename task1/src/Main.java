@@ -9,12 +9,12 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         System.out.println("Введите 4 положительных числа через пробел, пример: 6 3 5 4");
         String line = scan.nextLine();
-        String[] parts = line.trim().split("\\s+");
+        String[] nums = line.trim().split("\\s+");
 
-        n1 = Integer.parseInt(parts[0]);
-        m1 = Integer.parseInt(parts[1]);
-        n2 = Integer.parseInt(parts[2]);
-        m2 = Integer.parseInt(parts[3]);
+        n1 = Integer.parseInt(nums[0]);
+        m1 = Integer.parseInt(nums[1]);
+        n2 = Integer.parseInt(nums[2]);
+        m2 = Integer.parseInt(nums[3]);
 
         String path1 = buildPath(n1, m1); // путь 1 массива
         String path2 = buildPath(n2, m2); // путь 2 массива
