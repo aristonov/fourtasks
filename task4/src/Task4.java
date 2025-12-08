@@ -1,41 +1,43 @@
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import java.util.Arrays;
 
 public class Task4 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Scanner console = new Scanner(System.in);
 
-        // Указываем путь к файлу
-        System.out.print("Введите путь к файлу ");
+        // Выбираем наш файл
+        System.out.print("Введите путь к файлу (для проверки в корне программы есть файл numbers.txt): ");
         String filename = console.nextLine();
-        List<Integer> list = new ArrayList<>();
 
-        try (Scanner scan = new Scanner(new File(filename))) {
-            while (scan.hasNextInt()) {
-                list.add(scan.nextInt());
-            }
-        } catch (Exception e) {
-            System.out.println("Ошибка чтения");
-            return;
+        // Считаем кол-во чисел в файле
+        Scanner scan = new Scanner(new File(filename));
+        int count = 0;
+        while (scan.hasNextInt()) {
+            scan.nextInt();
+            count++;
         }
+        scan.close();
 
-        // конвертируем и сортируем наш массив
-        int[] nums = list.stream().mapToInt(i -> i).toArray();
+        // Создаём наш массив с числами из файла
+        int[] nums = new int[count];
+        scan = new Scanner(new File(filename));
+        for (int i = 0; i < count; i++) {
+            nums[i] = scan.nextInt();
+        }
+        scan.close();
+
+        // Сортируем массив и находим медиану
         Arrays.sort(nums);
+        int median = nums[count / 2];
 
-        int n = nums.length;
-        int median = nums[n / 2 - 1];
-
-        // считаем кол-во ходов
+        // Считаем кол-во наших ходов к медиане
         int moves = 0;
         for (int x : nums) {
             moves += Math.abs(x - median);
         }
 
-        // проверяем на ограничение в 20 ходов
+        // Проверяем, если больше 20 ходов то выводим сообщение, если нет то выводим медиану
         if (moves > 20) {
             System.out.println("20 ходов недостаточно для приведения всех элементов массива к одному числу");
         } else {
